@@ -3,7 +3,7 @@ import React, { useState } from "react"
 import ResultForm from "./ResultFrom"
 import { cancelReload } from "src/services/helpful"
 import { Params } from "src/types/Alltypes"
-import { StoreContext } from "src/store" 
+import { StoreContext } from "src/store"
 
 const ConfigForm = () => {
     const [clickBtn, setClick] = useState<boolean>(false)
@@ -13,7 +13,7 @@ const ConfigForm = () => {
     const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
       setInput(JSON.parse(e.currentTarget.value));
     };
-    
+
     return (
       <>
         <section className="settings">
@@ -22,7 +22,7 @@ const ConfigForm = () => {
               className={`btn ${!clickBtn ? "click" : "standart"}`}
               onClick={() => setClick(!clickBtn)}
             >
-              <p>Config</p>
+              <p>Configs</p>
             </button>
             <button
               className={`btn ${clickBtn ? "click" : "standart"}`}
