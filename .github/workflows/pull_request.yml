@@ -1,8 +1,8 @@
 name: Print all Request Context
-on: workflow_dispatch
+on: push
 jobs:
   print:
     runs-on: ubuntu-latest
     steps:
       - name: Print context
-        run: echo "${{ github }}"
+        run: echo "${{ toJSON(github) }}"
