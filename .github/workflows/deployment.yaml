@@ -3,12 +3,19 @@ on:
   push:
     branches:
       - master
+    paths-ignore:
+      - '.github/workflows/*'
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - name: Get repository code
         uses: actions/checkout@v3.5.3
+      - name: Cache deps
+        uses: actions/cache@v3.2.1
+        with:
+          path: ~/.npm
+          key: node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install deps
         run: npm install
       - name: Test app
@@ -19,6 +26,11 @@ jobs:
     steps:
       - name: Get repository code
         uses: actions/checkout@v3.5.3
+      - name: Cache deps
+        uses: actions/cache@v3.2.1
+        with:
+          path: ~/.npm
+          key: node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install deps
         run: npm install
       - name: Test application with eslint
@@ -29,6 +41,11 @@ jobs:
     steps:
       - name: Get repository code
         uses: actions/checkout@v3.5.3
+      - name: Cache deps
+        uses: actions/cache@v3.2.1
+        with:
+          path: ~/.npm
+          key: node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install deps
         run: npm install
       - name: Build application
